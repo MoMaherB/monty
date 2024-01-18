@@ -13,15 +13,24 @@ void handle_file(FILE *file)
 	stack_t *stack = NULL;
 
 	instruction_t monty_funcs[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{"swap", swap}, {"add", add}, {"nop", nop}, {NULL, NULL}
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
+		{"add", add}, {"nop", nop}, {"sub", sub}, {"mul", mul}, {"div", div_op},
+		{"mod", mod}, {"pchar", pchar_op}, {"pstr", pstr_op}, {"rotl", rotl},
+		{"rotr", rotr}, {NULL, NULL}
 	};
+
 	while ((getline(&line, &len, file)) != -1)
 	{
 		line_number++;
 		opcode = strtok(line, " \n");
 		if (opcode != NULL)
 		{
+			if (opcode[0] == '#')
+			{
+				free(line);
+				continue;
+			}
+
 			for (i = 0; monty_funcs[i].opcode != NULL; i++)
 			{
 				if (strcmp(opcode, monty_funcs[i].opcode) == 0)

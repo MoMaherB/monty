@@ -10,31 +10,29 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-        char *value;
-        stack_t *newnode;
+	char *value;
+	stack_t *newnode;
 
-    value = strtok(NULL, " \n");
-    if (value[0] == '\0' || (!isdigit(value[0]) && value[0] != '-'))
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	value = strtok(NULL, " \n");
+	if (value[0] == '\0' || (!isdigit(value[0]) && value[0] != '-'))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    newnode = malloc(sizeof(stack_t));
-    if (newnode == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+	newnode = malloc(sizeof(stack_t));
+	if (newnode == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	newnode->n = atoi(value);
+	newnode->prev = NULL;
+	newnode->next = *stack;
 
-    newnode->n = atoi(value);
-    newnode->prev = NULL;
-    newnode->next = *stack;
-
-    if (*stack != NULL)
-        (*stack)->prev = newnode;
-
-    *stack = newnode;
+	if (*stack != NULL)
+		(*stack)->prev = newnode;
+	*stack = newnode;
 }
 /**
  * pall - Prints all values on the stack.
@@ -46,14 +44,13 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-        stack_t *temp;
+	stack_t *temp;
 
-    (void)line_number;
-
-   temp = *stack;
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->n);
-        temp = temp->next;
-    }
+	(void)line_number;
+	temp = *stack;
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }
