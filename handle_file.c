@@ -26,11 +26,7 @@ void handle_file(FILE *file)
 		if (opcode != NULL)
 		{
 			if (opcode[0] == '#')
-			{
-				free(line);
 				continue;
-			}
-
 			for (i = 0; monty_funcs[i].opcode != NULL; i++)
 			{
 				if (strcmp(opcode, monty_funcs[i].opcode) == 0)
