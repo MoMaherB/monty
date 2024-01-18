@@ -1,4 +1,4 @@
-#include "stacks.h"
+#include "monty.h"
 /**
  * swap - Swaps the top two elements of the stack.
  * @stack: Pointer to the head of the stack.

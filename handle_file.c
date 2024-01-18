@@ -1,4 +1,4 @@
-#include "stacks.h"
+#include "monty.h"
 /**
  * handle_file - Handles Monty commands from an open file.
  * @file: Pointer to the open Monty file.

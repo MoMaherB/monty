@@ -1,4 +1,4 @@
-#include "stacks.h"
+#include "monty.h"
 /**
  * main - Entry point monty program.
  * @argc: Number arguments.
